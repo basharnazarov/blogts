@@ -4,11 +4,7 @@ import NewPost from "../../components/newPost";
 
 function CreatePost() {
   return (
-    <div>
-      index create post page!!!!
-      <Link href="/">
-        <button>back to posts!!</button>
-      </Link>
+    <div style={{paddingLeft: '28px', paddingTop: '19px'}}>
       <NewPost />
     </div>
   );

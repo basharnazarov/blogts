@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+  row-gap: 8px;
+}
+
+.field {
+  width: 432px;
+  height: 36px;
+  background: #f5f6fa;
+  border-radius: 8px;
+  border: none;
+  padding-left: 12px;
+}
+
+.field::placeholder {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 12px;
+
+  color: #667281;
+}
+
+.field:focus {
+  outline: none !important;
+}
+
+.newpost > p {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #2F2F2F;
+  margin: 0;
+  padding: 0;
+}

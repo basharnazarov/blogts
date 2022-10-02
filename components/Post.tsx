@@ -16,7 +16,11 @@ function Post() {
           </button>
         </Link>
       </div>
-
+      <div className={styles.filter}>
+        <div className={styles.options}>All statuses <span className={styles.badge}>20</span></div>
+        <div className={styles.options}>Drafts <span className={styles.badge}>1</span></div>
+        <div className={styles.options}>Published <span className={styles.badge}>19</span></div>
+      </div>
       <div>{/* <PostData /> */}</div>
     </div>
   );

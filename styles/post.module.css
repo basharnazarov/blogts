@@ -9,7 +9,7 @@
   background: #f5f6fa;
   border-radius: 8px;
   border: none;
-  padding-left: 12px;
+  padding-left: 24px;
 }
 
 .search::placeholder {
@@ -47,13 +47,44 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
-  /* identical to box height, or 114% */
-
   text-align: center;
-
   color: #ffffff;
 }
 
 .btnCreate:hover {
   cursor: pointer;
+}
+
+.filter {
+  display: flex;
+  margin-top: 12px;
+  width: 448px;
+  margin-left: 24px;
+  column-gap: 8px;
+}
+.options {
+  width: 144px;
+  height: 36px;
+  background: #f5f6fa;
+  border-radius: 8px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 10px 0px 10px 12px;
+}
+
+.badge {
+  font-family: "Gilroy";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  background: #b2c2df;
+  border-radius: 46px;
+  color: #ffffff;
+  padding: 4px 8px 4px 8px;
+  float: right;
+  margin-right: 12px;
 }
