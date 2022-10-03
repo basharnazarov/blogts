@@ -1,26 +1,25 @@
 import React from "react";
-import styles from '../styles/layout.module.css'
+import styles from "../styles/layout.module.css";
 import { IMain } from "../interfaces/layout.interface";
-import PixIcon from '@mui/icons-material/Pix';
-import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
-import SignpostIcon from '@mui/icons-material/Signpost';
+import Image from "next/image";
+import brand from "../public/brand.png";
+import posts from "../public/posts.png";
 
 const MainLayout: React.FC<IMain> = ({ children }) => {
   return (
     <div className={styles.layout}>
       <div className={styles.header}>
-        <div className={styles.logo}><PixIcon /> zoftify</div>
+        <div className={styles.logo}>
+          <Image src={brand} alt="logo and brand" />
+        </div>
         <div className={styles.headerLeft}>Posts</div>
       </div>
       <div className={styles.main}>
         <div className={styles.sidebar}>
           <ul className={styles.list}>
             <li>
-            <DynamicFeedIcon style={{color: '#177EFF'}}/> Posts
+              <Image src={posts} alt="sidebar icon" /> Posts
             </li>
-            {/* <li>
-            <SignpostIcon  style={{color: '#177EFF'}}/> koktailbar
-            </li> */}
           </ul>
         </div>
         <div className={styles.board}> {children}</div>
