@@ -9,6 +9,9 @@ function NewPost() {
         <input className={styles.field} placeholder="Title" />
         <input className={styles.field} placeholder="Status" />
         <input className={styles.field} placeholder="Time" type="date" />
+        <button type="submit" className={styles.btnSubmit}>
+            Submit
+          </button>
       </form>
     </div>
   );

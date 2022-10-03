@@ -1,13 +1,13 @@
 import Link from "next/link";
 import React from "react";
-// import PostData from "./PostData";
+import PostData from "./PostData";
 import styles from "../styles/post.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 
-function Post() {
+const Post: React.FC = () => {
   return (
-    <div>
-      <div className={styles.searchBox}>
+    <div className={styles.mainBox}>
+      <div>
         <input className={styles.search} placeholder="Search" />
         <SearchIcon className={styles.searchIcon} />
         <Link href="/createPost">
@@ -17,13 +17,21 @@ function Post() {
         </Link>
       </div>
       <div className={styles.filter}>
-        <div className={styles.options}>All statuses <span className={styles.badge}>20</span></div>
-        <div className={styles.options}>Drafts <span className={styles.badge}>1</span></div>
-        <div className={styles.options}>Published <span className={styles.badge}>19</span></div>
+        <div className={styles.options}>
+          All statuses <span className={styles.badge}>20</span>
+        </div>
+        <div className={styles.options}>
+          Draft <span className={styles.badge}>1</span>
+        </div>
+        <div className={styles.options}>
+          Published <span className={styles.badge}>19</span>
+        </div>
       </div>
-      <div>{/* <PostData /> */}</div>
+      <div>
+        <PostData />
+      </div>
     </div>
   );
-}
+};
 
 export default Post;

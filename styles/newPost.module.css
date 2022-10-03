@@ -11,7 +11,7 @@
   background: #f5f6fa;
   border-radius: 8px;
   border: none;
-  padding-left: 12px;
+  padding: 12px;
 }
 
 .field::placeholder {
@@ -34,7 +34,23 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: #2F2F2F;
+  color: #2f2f2f;
   margin: 0;
   padding: 0;
+}
+
+.btnSubmit {
+  width: 163px;
+  height: 36px;
+  border: none;
+  background: #177eff;
+  border-radius: 8px;
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 42px;
 }

@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 import Post from "../components/Post";
+import MainLayout from "../layout/mainLayout";
 
 
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <MainLayout>
       <Post />
-    </div>
+    </MainLayout>
   );
 };
 

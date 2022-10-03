@@ -1,6 +1,5 @@
-.searchBox {
-  padding-top: 16px;
-  padding-left: 24px;
+.mainBox {
+  padding: 16px 24px;
 }
 
 .search {
@@ -59,7 +58,6 @@
   display: flex;
   margin-top: 12px;
   width: 448px;
-  margin-left: 24px;
   column-gap: 8px;
 }
 .options {
