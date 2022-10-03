@@ -1,5 +1,4 @@
 
-
 export const rows = [
     {id: 1, title: 'Next.js is the future of React', time: '2h ago', statusPublished: true}, 
     {id: 2, title: 'Next.js is the future of React', time: '2h ago', statusPublished: true}, 
@@ -21,24 +20,5 @@ export const rows = [
     {id: 18, title: 'Next.js is the future of React', time: '2h ago', statusPublished: false}, 
     {id: 19, title: 'Any.js is the future of React', time: '2h ago', statusPublished: false}, 
     {id: 20, title: 'Any.js is the future of React', time: '2h ago', statusPublished: true},
-    {id: 21, title: 'Any.js is the nearest of React', time: '2h ago', statusPublished: true}, 
-    {id: 22, title: 'Next.js is the future of Web', time: '2h ago', statusPublished: false}, 
-    {id: 23, title: 'Next.js is the future of React', time: '2h ago', statusPublished: true}, 
-    {id: 24, title: 'Any.js is the future of React', time: '2h ago', statusPublished: true}, 
-    {id: 25, title: 'Next.js is the nearest of React', time: 'a yr ago', statusPublished: true},
-    {id: 26, title: 'Next.js is the future of React', time: 'a yr ago', statusPublished: true}, 
-    {id: 27, title: 'Next.js is the future of smtht', time: 'a yr ago', statusPublished: true}, 
-    {id: 28, title: 'Next.js is the future of React', time: '2h ago', statusPublished: true}, 
-    {id: 29, title: 'Next.js is the smth of React', time: '2h ago', statusPublished: false}, 
-    {id: 30, title: 'Next.js is the future of React', time: '2h ago', statusPublished: true},
-    {id: 31, title: 'Next.js is the future of React', time: '2h ago', statusPublished: true}, 
-    {id: 32, title: 'Next.js is the random of React', time: 'several months ago', statusPublished: true}, 
-    {id: 33, title: 'Next.js is any future of React', time: 'several months ago', statusPublished: true}, 
-    {id: 34, title: 'Next.js is the future of React', time: 'several months ago', statusPublished: true}, 
-    {id: 35, title: 'Next.js is the future of React', time: 'several months ago', statusPublished: false},
-    {id: 36, title: 'Next.js is some future ofanything', time: '2h ago', statusPublished: true}, 
-    {id: 37, title: 'Next.js is some future of React', time: '2h ago', statusPublished: false}, 
-    {id: 38, title: 'Next.js is some future of smth', time: '2h ago', statusPublished: false}, 
-    {id: 39, title: 'Next.js is the future of React', time: '2h ago', statusPublished: false}, 
-    {id: 40, title: 'Next.js is the future of React', time: '2h ago', statusPublished: true},
+ 
 ];

@@ -3,8 +3,12 @@ import React from "react";
 import PostData from "./PostData";
 import styles from "../styles/post.module.css";
 import SearchIcon from "@mui/icons-material/Search";
+import { RootState } from '../stores/store'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Post: React.FC = () => {
+
+  const totalPosts = useSelector((state: RootState) => state.posts.total)
   return (
     <div className={styles.mainBox}>
       <div>
@@ -18,7 +22,7 @@ const Post: React.FC = () => {
       </div>
       <div className={styles.filter}>
         <div className={styles.options}>
-          All statuses <span className={styles.badge}>20</span>
+          All statuses <span className={styles.badge}>{totalPosts}</span>
         </div>
         <div className={styles.options}>
           Draft <span className={styles.badge}>1</span>
