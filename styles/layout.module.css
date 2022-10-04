@@ -22,10 +22,12 @@
 }
 
 .headerLeft {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
   background: #fff;
   padding-left: 44px;
-  padding-top: 10px;
-  font-size: 24px;
+  font-size: 18px;
   width: 100%;
 }
 
@@ -75,4 +77,11 @@ ul.list li {
   border-radius: 8px;
   margin: 36px 12px 0px 12px;
   padding: 10px;
+}
+
+.arrow {
+  border: 2px solid #F5F6FA;
+  border-radius: 5px;
+  font-size: 30px;
+  padding: 4px;
 }

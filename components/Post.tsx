@@ -5,6 +5,7 @@ import styles from "../styles/post.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { RootState } from "../stores/store";
 import { useSelector, useDispatch } from "react-redux";
+import { handlePage } from "../slices/pageSlice";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { counter } from "../slices/postSlice";
@@ -38,7 +39,13 @@ const Post: React.FC = () => {
         <input className={styles.search} placeholder="Search" />
         <SearchIcon className={styles.searchIcon} />
         <Link href="/createPost">
-          <button type="button" className={styles.btnCreate}>
+          <button
+            type="button"
+            className={styles.btnCreate}
+            onClick={() => {
+              console.log(dispatch(handlePage(false)))
+            }}
+          >
             Create post
           </button>
         </Link>
@@ -52,22 +59,19 @@ const Post: React.FC = () => {
         className={styles.filter}
       >
         <Tab
+          className={styles.options}
           value="all"
-          label={
-            <div className={styles.options}>
-              All     &nbsp;{totalPosts.length}
-            </div>
-          }
+          label={<div>All &nbsp;{totalPosts.length}</div>}
         />
         <Tab
+          className={styles.options}
           value="draft"
-          label={<div className={styles.options}>Draft  &nbsp;{totalDrafts}</div>}
+          label={<div>Draft &nbsp;{totalDrafts}</div>}
         />
         <Tab
+          className={styles.options}
           value="published"
-          label={
-            <div className={styles.options}>Published  &nbsp;{totalPublished}</div>
-          }
+          label={<div>Published &nbsp;{totalPublished}</div>}
         />
       </Tabs>
       <div>

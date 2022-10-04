@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import postReducer from '../slices/postSlice'
+import pageReducer from '../slices/pageSlice'
 
 export const store = configureStore({
   reducer: {
-    postSlice: postReducer
+    postSlice: postReducer,
+    pageSlice: pageReducer
   },
 })
 

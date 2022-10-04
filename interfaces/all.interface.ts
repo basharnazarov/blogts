@@ -2,8 +2,7 @@ export interface IMain {
     children: React.ReactNode
 }
 
-
-  export interface Irows {
+export interface Irows {
     id: number,
     title: string,
     time: string,
@@ -18,4 +17,8 @@ export interface postsState {
         published: boolean,
         draft: boolean
     }
+  }
+
+  export interface pageState {
+    postPage: boolean
   }
