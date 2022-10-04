@@ -37,7 +37,7 @@
   width: 163px;
   height: 36px;
   right: 35px;
-  top: 82px;
+  top: 86px;
   border: none;
   background: #177eff;
   border-radius: 8px;
@@ -57,8 +57,7 @@
 .filter {
   display: flex;
   margin-top: 12px;
-  width: 448px;
-  column-gap: 8px;
+  width: 600px;
 }
 .options {
   width: 144px;
@@ -71,6 +70,12 @@
   font-size: 14px;
   line-height: 16px;
   padding: 10px 0px 10px 12px;
+}
+
+.options:hover {
+  background: #177eff;
+  cursor: pointer;
+  color: #fff;
 }
 
 .badge {

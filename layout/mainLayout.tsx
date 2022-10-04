@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../styles/layout.module.css";
-import { IMain } from "../interfaces/layout.interface";
+import { IMain } from "../interfaces/all.interface";
 import Image from "next/image";
 import brand from "../public/brand.png";
 import posts from "../public/posts.png";
