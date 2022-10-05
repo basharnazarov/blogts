@@ -22,3 +22,4 @@ export interface postsState {
   export interface pageState {
     postPage: boolean
   }
+

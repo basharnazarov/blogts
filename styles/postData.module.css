@@ -26,3 +26,18 @@ div.tableHeader > div {
   color: #111111;
   border-top: 1px solid #ebeef6;
 }
+
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icons {
+  display: none !important;
+}
+
+.css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar::after {
+  content:'showing'
+}

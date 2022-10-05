@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/postData.module.css";
 import { rows } from "../stores/data";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -7,13 +7,30 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import { RootState } from "../stores/store";
 import { useSelector, useDispatch } from "react-redux";
+import Pagination from "@mui/material/Pagination";
+import TablePagination from "@mui/material/TablePagination";
 
 const PostData: React.FC = () => {
+  const totalPosts = useSelector((state: RootState) => state.postSlice.posts);
+  const [page, setPage] = useState<number>(0);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   const filterStatus = useSelector(
     (state: RootState) => state.postSlice.filter
   );
 
-  const [selected, setSelected] = useState<string | null>(null);
+  // const [selected, setSelected] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -35,9 +52,11 @@ const PostData: React.FC = () => {
   }
 
   const handleSelect = (e: any) => {
-    setSelected(e.currentTarget.innerText);
+    // setSelected(e.currentTarget.innerText);
     handleClose();
   };
+
+  useEffect(() => {}, [filterStatus.published, filterStatus.draft]);
 
   return (
     <div className={styles.tableMain}>
@@ -56,6 +75,7 @@ const PostData: React.FC = () => {
             <div style={{ flex: "3" }}>{each.time}</div>
             <div style={{ flex: "3", display: "flex", alignItems: "center" }}>
               {each.statusPublished ? "Published" : "Draft"}
+
               <Button
                 id="basic-button"
                 aria-controls={open ? "basic-menu" : undefined}
@@ -82,6 +102,41 @@ const PostData: React.FC = () => {
           </div>
         );
       })}
+      <div className={styles.pagination}>
+        <TablePagination
+        className={styles.table}
+          sx={{
+            "& .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar": {
+              padding: 0,
+              margin: 0,
+             
+            },
+            '& .css-levciy-MuiTablePagination-displayedRows::before': {
+              mr: 1,
+              content:'"showing"'
+            },
+            '& .MuiTablePagination-actions': {
+              display:'none'
+            }
+          }}
+          rowsPerPageOptions={[5, 10, 15, 20]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          labelRowsPerPage={""}
+          backIconButtonProps={{ disabled: true }}
+          nextIconButtonProps={{ disabled: true }}
+        />
+       
+        <Pagination
+          count={Math.ceil(totalPosts.length / rowsPerPage)}
+          color="primary"
+          shape="rounded"
+        />
+      </div>
     </div>
   );
 };

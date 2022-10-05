@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { pageState } from "../interfaces/all.interface";
-import postSlice from "./postSlice";
 
 const initialState: pageState = {
     postPage: true

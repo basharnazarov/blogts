@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { handlePage } from "../slices/pageSlice";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { counter } from "../slices/postSlice";
+import { counter, handleFilter } from "../slices/postSlice";
 
 const Post: React.FC = () => {
   const [value, setValue] = useState<string>("all");
@@ -31,7 +31,7 @@ const Post: React.FC = () => {
 
   useEffect(() => {
     dispatch(counter());
-  }, [dispatch]);
+  }, [dispatch, filterStatus.published, filterStatus.draft]);
 
   return (
     <div className={styles.mainBox}>
@@ -43,7 +43,7 @@ const Post: React.FC = () => {
             type="button"
             className={styles.btnCreate}
             onClick={() => {
-              console.log(dispatch(handlePage(false)))
+              dispatch(handlePage(false));
             }}
           >
             Create post
@@ -62,16 +62,28 @@ const Post: React.FC = () => {
           className={styles.options}
           value="all"
           label={<div>All &nbsp;{totalPosts.length}</div>}
+          onClick={() => {
+            dispatch(handleFilter(value));
+            dispatch(counter());
+          }}
         />
         <Tab
           className={styles.options}
           value="draft"
           label={<div>Draft &nbsp;{totalDrafts}</div>}
+          onClick={() => {
+            dispatch(handleFilter(value));
+            dispatch(counter());
+          }}
         />
         <Tab
           className={styles.options}
           value="published"
           label={<div>Published &nbsp;{totalPublished}</div>}
+          onClick={() => {
+            dispatch(handleFilter(value));
+            dispatch(counter());
+          }}
         />
       </Tabs>
       <div>

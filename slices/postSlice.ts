@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { postsState } from "../interfaces/all.interface";
-import { Irows } from "../interfaces/all.interface";
+import { postsState, Irows } from "../interfaces/all.interface";
 import { rows } from "../stores/data";
+
 
 const initialState: postsState = {
   posts: rows,
@@ -31,10 +31,22 @@ export const postSlice = createSlice({
     addPost: (state, action: PayloadAction<Irows>) => {
       state.posts.push(action.payload);
     },
+    handleFilter: (state, action: PayloadAction<string>) => {
+      if(action.payload === 'published'){
+        state.filter.published = true
+        state.filter.draft = false
+      } else if(action.payload === 'draft') {
+         state.filter.draft = true
+         state.filter.published = false 
+      } else {
+        state.filter.published = true
+        state.filter.draft = true
+      }
+    }
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { counter, addPost } = postSlice.actions;
+export const { counter, addPost, handleFilter } = postSlice.actions;
 
 export default postSlice.reducer;
