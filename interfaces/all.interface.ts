@@ -23,3 +23,9 @@ export interface postsState {
     postPage: boolean
   }
 
+export interface Idata {
+    id: number | string,
+    title: string, 
+    time: Date | string,
+    status:string
+}

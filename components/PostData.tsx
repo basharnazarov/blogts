@@ -44,11 +44,11 @@ const PostData: React.FC = () => {
   let filtered = [];
 
   if (filterStatus.published === true && filterStatus.draft === false) {
-    filtered = rows.filter((post) => post.statusPublished === true);
+    filtered = totalPosts.filter((post) => post.statusPublished === true);
   } else if (filterStatus.published === false && filterStatus.draft === true) {
-    filtered = rows.filter((post) => post.statusPublished === false);
+    filtered = totalPosts.filter((post) => post.statusPublished === false);
   } else {
-    filtered = rows;
+    filtered = totalPosts;
   }
 
   const handleSelect = (e: any) => {
@@ -56,7 +56,7 @@ const PostData: React.FC = () => {
     handleClose();
   };
 
-  useEffect(() => {}, [filterStatus.published, filterStatus.draft]);
+
 
   return (
     <div className={styles.tableMain}>

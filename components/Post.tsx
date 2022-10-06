@@ -8,18 +8,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { handlePage } from "../slices/pageSlice";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { counter, handleFilter } from "../slices/postSlice";
+import {  handleFilter, fetchData } from "../slices/postSlice";
 
 const Post: React.FC = () => {
   const [value, setValue] = useState<string>("all");
   const dispatch = useDispatch();
   const totalPosts = useSelector((state: RootState) => state.postSlice.posts);
-  let totalDrafts = useSelector(
-    (state: RootState) => state.postSlice.draftsTotal
-  );
-  let totalPublished = useSelector(
-    (state: RootState) => state.postSlice.publishedTotal
-  );
+  let totalDrafts = totalPosts.filter(post => post.statusPublished === false)
+  let totalPublished = totalPosts.filter(post => post.statusPublished === true)
 
   const filterStatus = useSelector(
     (state: RootState) => state.postSlice.filter
@@ -30,8 +26,8 @@ const Post: React.FC = () => {
   };
 
   useEffect(() => {
-    dispatch(counter());
-  }, [dispatch, filterStatus.published, filterStatus.draft]);
+  
+  }, [totalPosts]);
 
   return (
     <div className={styles.mainBox}>
@@ -64,25 +60,25 @@ const Post: React.FC = () => {
           label={<div>All &nbsp;{totalPosts.length}</div>}
           onClick={() => {
             dispatch(handleFilter(value));
-            dispatch(counter());
+            // dispatch(counter());
           }}
         />
         <Tab
           className={styles.options}
           value="draft"
-          label={<div>Draft &nbsp;{totalDrafts}</div>}
+          label={<div>Draft &nbsp;{totalDrafts.length}</div>}
           onClick={() => {
             dispatch(handleFilter(value));
-            dispatch(counter());
+            // dispatch(counter());
           }}
         />
         <Tab
           className={styles.options}
           value="published"
-          label={<div>Published &nbsp;{totalPublished}</div>}
+          label={<div>Published &nbsp;{totalPublished.length}</div>}
           onClick={() => {
             dispatch(handleFilter(value));
-            dispatch(counter());
+            // dispatch(counter());
           }}
         />
       </Tabs>
