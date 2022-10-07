@@ -8,9 +8,10 @@ import { useRouter } from "next/router";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
+
 function NewPost() {
   const [status, setStatus] = React.useState("");
-
+  
   const handleChange = (event: SelectChangeEvent) => {
     setStatus(event.target.value as string);
   };
@@ -70,10 +71,48 @@ function NewPost() {
           onChange={handleInputChange}
         /> */}
         <Select
+          sx={{
+            "& .css-yf8vq0-MuiSelect-nativeInput": {
+              width: "432px",
+              height: "36px",
+              padding: "0px",
+              margin: "0px",
+            },
+            
+            "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select":
+              {
+                width: "422px",
+                height: "28px",
+                background: "#f5f6fa",
+                borderRadius: "8px",
+                border: "none",
+                padding: "5px 0px 0px 10px",
+                fontSize: '13px'
+              },
+            "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
+              width: "432px",
+              height: "38px",
+              margin: '0px',
+              padding: '0px'
+
+            },
+            "& .css-bpeome-MuiSvgIcon-root-MuiSelect-icon": {
+              position: "absolute",
+              left: "400px",
+            },
+            "& .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon": {
+              position: "absolute",
+              left: "400px",
+            },
+            "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input":{
+              paddingRight: '0px'
+            }
+          
+          }}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={status}
-          label="statusPublished"
+          // label="statusPublished"
           onChange={handleChange}
         >
           <MenuItem value={"Published"}>Published</MenuItem>
@@ -83,7 +122,7 @@ function NewPost() {
           className={styles.field}
           name="time"
           placeholder="Time"
-          type="date"
+          type="datetime-local"
           value={data.time}
           onChange={handleInputChange}
         />

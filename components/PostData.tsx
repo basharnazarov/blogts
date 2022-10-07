@@ -30,7 +30,6 @@ const PostData: React.FC = () => {
     (state: RootState) => state.postSlice.filter
   );
 
-  // const [selected, setSelected] = useState<string | null>(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -55,8 +54,6 @@ const PostData: React.FC = () => {
     // setSelected(e.currentTarget.innerText);
     handleClose();
   };
-
-
 
   return (
     <div className={styles.tableMain}>
@@ -104,20 +101,19 @@ const PostData: React.FC = () => {
       })}
       <div className={styles.pagination}>
         <TablePagination
-        className={styles.table}
+          className={styles.table}
           sx={{
             "& .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar": {
               padding: 0,
               margin: 0,
-             
             },
-            '& .css-levciy-MuiTablePagination-displayedRows::before': {
+            "& .css-levciy-MuiTablePagination-displayedRows::before": {
               mr: 1,
-              content:'"showing"'
+              content: '"showing"',
             },
-            '& .MuiTablePagination-actions': {
-              display:'none'
-            }
+            "& .MuiTablePagination-actions": {
+              display: "none",
+            },
           }}
           rowsPerPageOptions={[5, 10, 15, 20]}
           component="div"
@@ -130,7 +126,7 @@ const PostData: React.FC = () => {
           backIconButtonProps={{ disabled: true }}
           nextIconButtonProps={{ disabled: true }}
         />
-       
+
         <Pagination
           count={Math.ceil(totalPosts.length / rowsPerPage)}
           color="primary"

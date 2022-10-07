@@ -8,14 +8,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { handlePage } from "../slices/pageSlice";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import {  handleFilter, fetchData } from "../slices/postSlice";
+import { handleFilter } from "../slices/postSlice";
 
 const Post: React.FC = () => {
   const [value, setValue] = useState<string>("all");
   const dispatch = useDispatch();
   const totalPosts = useSelector((state: RootState) => state.postSlice.posts);
-  let totalDrafts = totalPosts.filter(post => post.statusPublished === false)
-  let totalPublished = totalPosts.filter(post => post.statusPublished === true)
+  let totalDrafts = totalPosts.filter((post) => post.statusPublished === false);
+  let totalPublished = totalPosts.filter(
+    (post) => post.statusPublished === true
+  );
 
   const filterStatus = useSelector(
     (state: RootState) => state.postSlice.filter
@@ -25,9 +27,19 @@ const Post: React.FC = () => {
     setValue(newValue);
   };
 
-  useEffect(() => {
-  
-  }, [totalPosts]);
+  const handleSort = (status: any) => {
+    if (status.startsWith("A")) {
+      dispatch(handleFilter("all"));
+    }
+    if (status.startsWith("D")) {
+      dispatch(handleFilter("draft"));
+    }
+    if (status.startsWith("P")) {
+      dispatch(handleFilter("published"));
+    }
+  };
+
+  useEffect(() => {}, [totalPosts, value]);
 
   return (
     <div className={styles.mainBox}>
@@ -58,27 +70,24 @@ const Post: React.FC = () => {
           className={styles.options}
           value="all"
           label={<div>All &nbsp;{totalPosts.length}</div>}
-          onClick={() => {
-            dispatch(handleFilter(value));
-            // dispatch(counter());
+          onClick={(e: any) => {
+            handleSort(e.target.outerText);
           }}
         />
         <Tab
           className={styles.options}
           value="draft"
           label={<div>Draft &nbsp;{totalDrafts.length}</div>}
-          onClick={() => {
-            dispatch(handleFilter(value));
-            // dispatch(counter());
+          onClick={(e: any) => {
+            handleSort(e.target.outerText);
           }}
         />
         <Tab
           className={styles.options}
           value="published"
           label={<div>Published &nbsp;{totalPublished.length}</div>}
-          onClick={() => {
-            dispatch(handleFilter(value));
-            // dispatch(counter());
+          onClick={(e: any) => {
+            handleSort(e.target.outerText);
           }}
         />
       </Tabs>

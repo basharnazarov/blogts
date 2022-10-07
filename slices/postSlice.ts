@@ -34,18 +34,19 @@ export const postSlice = createSlice({
       state.posts = [...state.posts, action.payload];
     },
     handleFilter: (state, action: PayloadAction<string>) => {
-      if (action.payload === "published") {
-        state.filter.published = true;
-        state.filter.draft = false;
-      } else if (action.payload === "draft") {
-        state.filter.draft = true;
-        state.filter.published = false;
-      } else {
-        state.filter.published = true;
-        state.filter.draft = true;
+      switch (action.payload) {
+        case "published":
+          state.filter = { ...state.filter, published: true, draft: false };
+          break;
+        case "draft":
+          state.filter = { ...state.filter, published: false, draft: true };
+          break;
+        case "all":
+          state.filter = { ...state.filter, published: true, draft: true };
+          break;
       }
     },
-    fetchData: (state, action: PayloadAction<any>) => {
+    fetchData: (state) => {
       state.posts = fetchLocalData();
     },
   },
