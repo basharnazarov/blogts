@@ -54,12 +54,7 @@
   cursor: pointer;
 }
 
-.filter {
-  display: flex;
-  margin-top: 12px;
-  width: 600px;
-  
-}
+
 .options {
   width: 144px;
   height: 36px;
@@ -71,7 +66,6 @@
   font-size: 14px;
   line-height: 16px;
   text-transform: unset !important;
-  
 }
 
 .options:hover {
@@ -91,5 +85,5 @@
   color: #ffffff;
   padding: 4px 8px 4px 8px;
   float: right;
-  margin-right: 12px;
+  
 }

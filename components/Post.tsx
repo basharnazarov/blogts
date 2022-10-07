@@ -59,17 +59,51 @@ const Post: React.FC = () => {
         </Link>
       </div>
       <Tabs
+        sx={{
+          "& .css-jpln7h-MuiTabs-scroller": {
+            maxWidth: "450px ",
+            height: "44px",
+            // background: "#F5F6FA",
+            borderRadius: "8px",
+            
+            margin:'10px 0 0 0'
+          },
+          "& .css-heg063-MuiTabs-flexContainer": {
+            display: "flex",
+            columnGap: "10px !important",
+            justifyContent: "space-around",
+           
+           
+          },
+         
+         
+         
+        }}
         value={value}
         onChange={handleChange}
         textColor="primary"
         indicatorColor="primary"
         aria-label="info tabs example"
-        className={styles.filter}
       >
         <Tab
+          sx={{
+            "& .post_options__g5FZG": {
+              height: "36px",
+              padding: "0px",
+            },
+            "& .css-1h9z7r5-MuiButtonBase-root-MuiTab-root": {
+              height: "36px",
+              padding: "0px",
+            },
+          }}
           className={styles.options}
           value="all"
-          label={<div>All &nbsp;{totalPosts.length}</div>}
+          label={
+            <div style={{ display: "flex", alignItems: "center" }}>
+              All posts &nbsp;
+              <p className={styles.badge}>{totalPosts.length}</p>
+            </div>
+          }
           onClick={(e: any) => {
             handleSort(e.target.outerText);
           }}
@@ -77,7 +111,12 @@ const Post: React.FC = () => {
         <Tab
           className={styles.options}
           value="draft"
-          label={<div>Draft &nbsp;{totalDrafts.length}</div>}
+          label={
+            <div style={{ display: "flex", alignItems: "center" }}>
+              Draft &nbsp;
+              <p className={styles.badge}>{totalDrafts.length}</p>
+            </div>
+          }
           onClick={(e: any) => {
             handleSort(e.target.outerText);
           }}
@@ -85,7 +124,12 @@ const Post: React.FC = () => {
         <Tab
           className={styles.options}
           value="published"
-          label={<div>Published &nbsp;{totalPublished.length}</div>}
+          label={
+            <div style={{ display: "flex", alignItems: "center" }}>
+              Published &nbsp;
+              <p className={styles.badge}>{totalPublished.length}</p>
+            </div>
+          }
           onClick={(e: any) => {
             handleSort(e.target.outerText);
           }}

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { postsState, Irows } from "../interfaces/all.interface";
+import { postsState, Irows, Isort } from "../interfaces/all.interface";
 import { rows } from "../stores/data";
 import { fetchLocalData } from "../helpers/handleLocalStorage";
 
@@ -46,6 +46,18 @@ export const postSlice = createSlice({
           break;
       }
     },
+    handleStatus: (state, action: PayloadAction<Isort>) => {
+      state.posts.forEach((post) => {
+        if (post.id === action.payload.id) {
+          if (action.payload.status === "Published") {
+            state.posts[action.payload.id - 1].statusPublished = true;
+          }
+          if (action.payload.status === "Draft") {
+            state.posts[action.payload.id - 1].statusPublished = false;
+          }
+        }
+      });
+    },
     fetchData: (state) => {
       state.posts = fetchLocalData();
     },
@@ -53,6 +65,7 @@ export const postSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addPost, handleFilter, fetchData } = postSlice.actions;
+export const { addPost, handleFilter, fetchData, handleStatus } =
+  postSlice.actions;
 
 export default postSlice.reducer;

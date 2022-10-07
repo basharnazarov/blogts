@@ -9,12 +9,15 @@ import { RootState } from "../stores/store";
 import { useSelector, useDispatch } from "react-redux";
 import Pagination from "@mui/material/Pagination";
 import TablePagination from "@mui/material/TablePagination";
+import { handleStatus } from "../slices/postSlice";
+
 
 const PostData: React.FC = () => {
+  const dispatch = useDispatch()
   const totalPosts = useSelector((state: RootState) => state.postSlice.posts);
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
-
+  const [selected, setSelected] = useState<number>(0)
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
   };
@@ -50,8 +53,9 @@ const PostData: React.FC = () => {
     filtered = totalPosts;
   }
 
-  const handleSelect = (e: any) => {
-    // setSelected(e.currentTarget.innerText);
+  const handleSelect = (e: any, i: number) => {
+    
+    dispatch(handleStatus({id: selected, status: e.target.outerText}))
     handleClose();
   };
 
@@ -64,9 +68,15 @@ const PostData: React.FC = () => {
         <div style={{ flex: "3" }}>Status</div>
       </div>
 
-      {filtered.map((each) => {
+      {filtered.map((each, index) => {
         return (
-          <div className={styles.tableBody} key={each.id}>
+          <div
+            className={styles.tableBody}
+            key={each.id}
+            onClick={() => {
+              setSelected(each.id)
+            }}
+          >
             <div style={{ flex: "1" }}>{each.id}</div>
             <div style={{ flex: "5" }}>{each.title}</div>
             <div style={{ flex: "3" }}>{each.time}</div>
@@ -85,6 +95,9 @@ const PostData: React.FC = () => {
               </Button>
             </div>
             <Menu
+              onClick={(e) => {
+                handleSelect(e, each.id);
+              }}
               id="basic-menu"
               anchorEl={anchorEl}
               open={open}
@@ -93,8 +106,8 @@ const PostData: React.FC = () => {
                 "aria-labelledby": "basic-button",
               }}
             >
-              <MenuItem onClick={(e) => handleSelect(e)}>Published</MenuItem>
-              <MenuItem onClick={(e) => handleSelect(e)}>Draft</MenuItem>
+              <MenuItem>Published</MenuItem>
+              <MenuItem>Draft</MenuItem>
             </Menu>
           </div>
         );

@@ -29,3 +29,8 @@ export interface Idata {
     time: Date | string,
     status:string
 }
+
+export interface Isort {
+    id: number,
+    status: string
+}

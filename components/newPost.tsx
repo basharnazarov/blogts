@@ -7,11 +7,11 @@ import { handleLocalStorage } from "../helpers/handleLocalStorage";
 import { useRouter } from "next/router";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-
+import { handlePage } from "../slices/pageSlice";
 
 function NewPost() {
   const [status, setStatus] = React.useState("");
-  
+
   const handleChange = (event: SelectChangeEvent) => {
     setStatus(event.target.value as string);
   };
@@ -45,6 +45,7 @@ function NewPost() {
     let final =
       status === "Published" ? { ...data, statusPublished: true } : data;
     dispatch(addPost(final));
+    dispatch(handlePage(true));
     router.push("/");
   };
 
@@ -63,13 +64,7 @@ function NewPost() {
           value={data.title}
           onChange={handleInputChange}
         />
-        {/* <input
-          className={styles.field}
-          name="statusPublished"
-          placeholder="Status"
-          value={data.status}
-          onChange={handleInputChange}
-        /> */}
+
         <Select
           sx={{
             "& .css-yf8vq0-MuiSelect-nativeInput": {
@@ -78,7 +73,7 @@ function NewPost() {
               padding: "0px",
               margin: "0px",
             },
-            
+
             "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select":
               {
                 width: "422px",
@@ -87,14 +82,13 @@ function NewPost() {
                 borderRadius: "8px",
                 border: "none",
                 padding: "5px 0px 0px 10px",
-                fontSize: '13px'
+                fontSize: "13px",
               },
             "& .css-1d3z3hw-MuiOutlinedInput-notchedOutline": {
               width: "432px",
               height: "38px",
-              margin: '0px',
-              padding: '0px'
-
+              margin: "0px",
+              padding: "0px",
             },
             "& .css-bpeome-MuiSvgIcon-root-MuiSelect-icon": {
               position: "absolute",
@@ -104,16 +98,21 @@ function NewPost() {
               position: "absolute",
               left: "400px",
             },
-            "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input":{
-              paddingRight: '0px'
-            }
-          
+            "& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input":
+              {
+                paddingRight: "0px",
+              },
           }}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={status}
-          // label="statusPublished"
           onChange={handleChange}
+          displayEmpty
+          renderValue={
+            status !== ""
+              ? undefined
+              : () => <span style={{ color: "#667281" }}>Status</span>
+          }
         >
           <MenuItem value={"Published"}>Published</MenuItem>
           <MenuItem value={"Draft"}>Draft</MenuItem>
